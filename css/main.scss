@@ -1,0 +1,23 @@
+body {
+	margin:0;
+	padding: 0;
+}
+
+#main {
+	width:385px;
+	height: 770px;
+	margin: auto;
+    div {
+	   width: 55px;
+	   height: 55px;
+	   float: left;
+    }
+    
+    div:nth-child(2n){
+	   background: red;
+    }
+    
+    div:nth-child(2n+1){
+	   background: blue;
+    }
+}
