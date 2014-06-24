@@ -4,15 +4,6 @@ body {
 
 #main {
   width: 385px;
-  height: 770px;
-  margin: auto; }
-  #main div {
-    width: 55px;
-    height: 55px;
-    float: left; }
-  #main div:nth-child(2n) {
-    background: red; }
-  #main div:nth-child(2n+1) {
-    background: blue; }
+  height: 770px; }
 
 /*# sourceMappingURL=main.css.map */
