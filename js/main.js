@@ -31,11 +31,7 @@ var imageMaker = function(hash) {
   };
 };
 
-function shit() {
-  console.log(spriteSheet)
-};
 
-shit();
 // Request to json
 var xhr = new XMLHttpRequest;
 xhr.open("GET", "/sprites/json", true);
