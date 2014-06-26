@@ -1,0 +1,20 @@
+{"frames": {
+
+"octo.png":
+{
+	"frame": {"x":2,"y":2,"w":724,"h":896},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":85,"y":0,"w":724,"h":896},
+	"sourceSize": {"w":896,"h":896}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "octo.png",
+	"format": "RGBA8888",
+	"size": {"w":728,"h":900},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4087f54e2524a95be2d69e000d1a5af7:fa60b8799550b3e79220295be965c452:8620abc468342ae466c33d765e6e03a5$"
+}
+}
