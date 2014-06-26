@@ -5,7 +5,6 @@ cantag.width = '500';
 cantag.height ='1000';
 
 
-
 var RectByCoor = {
   Draw :
   function () {
@@ -22,4 +21,30 @@ var RectByCoor = {
   }
 };
 setInterval ( function () { RectByCoor.Draw();},1000);
+
+
+// Image maker
+var spriteSheet = [];
+var imageMaker = function(hash) {
+  for(var key in hash) {
+    spriteSheet.push(hash[key]);
+  };
+};
+
+function shit() {
+  console.log(spriteSheet)
+};
+
+shit();
+// Request to json
+var xhr = new XMLHttpRequest;
+xhr.open("GET", "/sprites/json", true);
+xhr.onload = function() {
+  var parsed = JSON.parse(xhr.responseText);
+  var frame = parsed.frames;
+  console.log(frame);
+  imageMaker(frame);
+  
+};
+xhr.send();
 
