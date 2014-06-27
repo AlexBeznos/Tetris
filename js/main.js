@@ -4,11 +4,8 @@ var ctx = cantag.getContext("2d");
 cantag.width = '250';
 cantag.height ='500';
 
-var timeInterval = 40;
+var timeInterval = 10;
 
-
-  var img = new Image();
-  img.src = "/sprites/json.png";
 
 // function for saving blocks on the game field
 var savedBlocks = [];
@@ -16,6 +13,8 @@ var blockSaver = function(hash, x, y) {
   hash.ex = x;
   hash.ey = y;
   savedBlocks.push(hash);
+  var img = new Image();
+  img.src = "/sprites/json.png";
   for(var id in savedBlocks){
     img.onload = function() {
       ctx.drawImage(img, savedBlocks[id].x, 
@@ -34,20 +33,22 @@ var blockSaver = function(hash, x, y) {
 
 
 // Calculator of block stop
-var calculator = function(height, key) {
-  var numb = cantag.height - height;
-  var answer = (key < numb) ? true : false;
+var calculator = function(obj, x, y) {
+  var numb = cantag.height - obj.h;
+  var answer = (y < numb) ? true : false;
   return answer
 };
 
 // Draw image
 var imgDrawer = function(object) {
   var i = 0;
+  var img = new Image();
+  img.src = "/sprites/json.png";
   img.onload = function() {
     var interval = setInterval( function() {
       i+=2;
-      ctx.clearRect ( 0, i-2, object.w , object.h );
-      var calc = calculator(object.h, i); 
+      ctx.clearRect ( 0, i-2, object.w , object.h/2 );
+      var calc = calculator(object, 0, i); 
       if(calc) {
         ctx.drawImage(img, object.x, 
                       object.y, 
