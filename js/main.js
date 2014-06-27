@@ -7,24 +7,28 @@ cantag.height ='500';
 var timeInterval = 40;
 
 
+  var img = new Image();
+  img.src = "/sprites/json.png";
+
 // function for saving blocks on the game field
 var savedBlocks = [];
 var blockSaver = function(hash, x, y) {
   hash.ex = x;
   hash.ey = y;
   savedBlocks.push(hash);
-  var img = new Image();
-  img.src = "/sprites/json.png";
-  console.log(savedBlocks[0]);
-    ctx.drawImage(img, savedBlocks[0].x, 
-                  savedBlocks[0].y, 
-                  savedBlocks[0].w, 
-                  savedBlocks[0].h, 
-                  10, 
-                  savedBlocks[0].ey, 
-                  savedBlocks[0].w, 
-                  savedBlocks[0].h
-                 );
+  for(var id in savedBlocks){
+    img.onload = function() {
+      ctx.drawImage(img, savedBlocks[id].x, 
+                  savedBlocks[id].y, 
+                  savedBlocks[id].w, 
+                  savedBlocks[id].h, 
+                  savedBlocks[id].ex, 
+                  savedBlocks[id].ey, 
+                  savedBlocks[id].w, 
+                  savedBlocks[id].h
+                 )
+    };
+  };
   randomiser();
 };
 
@@ -39,8 +43,6 @@ var calculator = function(height, key) {
 // Draw image
 var imgDrawer = function(object) {
   var i = 0;
-  var img = new Image();
-  img.src = "/sprites/json.png";
   img.onload = function() {
     var interval = setInterval( function() {
       i+=2;
