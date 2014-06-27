@@ -4,34 +4,29 @@ var ctx = cantag.getContext("2d");
 cantag.width = '500';
 cantag.height ='1000';
 
+//strang img bug
+var img = new Image();
+img.src = "/sprites/json.png";
+ctx.drawImage(img, 0, 0);
 
-var RectByCoor = {
-  Draw :
-  function () {
-      
-        ctx.fillStyle = '#FF0000';
-        ctx.fillRect(0,this.index,500,100);
-        this.index += 100;  
-        setTimeout ( function () { RectByCoor.Clear();},950); 
-      
-  },
-    index : 0,
-  Clear  : function () {
-    ctx.clearRect(0,0,500,1000);
-  }
+
+// Draw image
+var imgDrawer = function(object) {
+  var img = new Image();
+  img.src = "/sprites/json.png";
+  ctx.drawImage(img, object.x, object.y, object.w, object.h, 0, 0, object.w, object.h);
 };
-setInterval ( function () { RectByCoor.Draw();},1000);
-
 
 // Image array maker
 var spriteSheet = [];
 var imageArrayMaker = function(hash) {
   var newHash = {};
   for(var key in hash) {
-    newHash.frame = hash[key].frame;
-    newHash.frame.name = key;
+    newHash = hash[key].frame;
+    newHash.name = key;
     spriteSheet.push(newHash);
   };
+  imgDrawer(spriteSheet[6]);
 };
 
 // Request to json
@@ -43,6 +38,3 @@ xhr.onload = function() {
   imageArrayMaker(frame);  
 };
 xhr.send();
-
-console.log(spriteSheet);
-
