@@ -23,14 +23,16 @@ var RectByCoor = {
 setInterval ( function () { RectByCoor.Draw();},1000);
 
 
-// Image maker
+// Image array maker
 var spriteSheet = [];
-var imageMaker = function(hash) {
+var imageArrayMaker = function(hash) {
+  var newHash = {};
   for(var key in hash) {
-    spriteSheet.push(hash[key]);
+    newHash.frame = hash[key].frame;
+    newHash.frame.name = key;
+    spriteSheet.push(newHash);
   };
 };
-
 
 // Request to json
 var xhr = new XMLHttpRequest;
@@ -38,9 +40,9 @@ xhr.open("GET", "/sprites/json", true);
 xhr.onload = function() {
   var parsed = JSON.parse(xhr.responseText);
   var frame = parsed.frames;
-  console.log(frame);
-  imageMaker(frame);
-  
+  imageArrayMaker(frame);  
 };
 xhr.send();
+
+console.log(spriteSheet);
 
